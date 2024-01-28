@@ -4,7 +4,7 @@ namespace Vinelab\Bowler\Exceptions;
 
 use Exception;
 use Illuminate\Config\Repository;
-use Illuminate\Contracts\Logging\Log;
+use Psr\Log\LoggerInterface;
 use Illuminate\Support\Str;
 use PhpAmqpLib\Exception\AMQPProtocolChannelException;
 use PhpAmqpLib\Exception\AMQPProtocolConnectionException;
@@ -24,7 +24,7 @@ class Handler
     private $exceptionHandler;
 
     /**
-     * @var \Psr\Log\LoggerInterface|\Illuminate\Contracts\Logging\Log
+     * @var LoggerInterface
      */
     private $logger;
 
@@ -36,7 +36,7 @@ class Handler
     /**
      * Handler constructor.
      * @param  ExceptionHandler  $handler
-     * @param  \Psr\Log\LoggerInterface|\Illuminate\Contracts\Logging\Log  $logger
+     * @param LoggerInterface  $logger
      * @param  Repository  $config
      */
     public function __construct(ExceptionHandler $handler, $logger, Repository $config)
